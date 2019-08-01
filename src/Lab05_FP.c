@@ -16,7 +16,7 @@ char* getArg(int strlength) { // Get an argument / word !
 char** getArgv(int vectorlength, int strlength) { // Get an argument vector / list-of-words !
 	int i;
 	char **argv = (char**) calloc(vectorlength, sizeof(char*));
-	for (i = 0; i < strlength; i++) { // Dynamic-continuous allocation for each word in the array of words !
+	for (i = 0; i < vectorlength; i++) { // Dynamic-continuous allocation for each word in the array of words !
 		argv[i] = (char*) calloc(strlength, sizeof(char));
 	}
 	return argv;
@@ -321,7 +321,7 @@ int* ex18(char *str) {
 	int i, j = 0;
 	printf("-> All digits contained are: ");
 	for (i = 0; i < strlen(str); i++) { // Print out the value of each extracted digits !
-		if (str[i] > '0' && str[i] < '9') {
+		if (str[i] >= '0' && str[i] <= '9') {
 			printf("[%c]", str[i]);
 			digitArray[j++] = str[i] - '0'; // Convert character to integer !
 		}
