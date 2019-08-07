@@ -8,13 +8,16 @@ int main() {
 	printf("A1X+B1Y=C1\n");
 	printf("A2X+B2Y=C2\n");
 	printf("Nhap cac he so \n");
-	//printf("A1= "); scanf("%f", &a1); printf("\a\n");
-	//printf("B1= "); scanf("%f", &b1); printf("\a\n");
-	//printf("C1= "); scanf("%f", &c1); printf("\a\n");
-	//printf("A2= "); scanf("%f", &a2); printf("\a\n");
-	//printf("B2= "); scanf("%f", &b2); printf("\a\n");
-	//printf("C2= "); scanf("%f", &c2); printf("\a\n");
-	a1 = 1; b1 = 2; c1 = 3; a2 = 4; b2 = 5; c2 = 6;
+	/*
+	printf("A1= "); scanf("%f", &a1); printf("\a\n");
+	printf("B1= "); scanf("%f", &b1); printf("\a\n");
+	printf("C1= "); scanf("%f", &c1); printf("\a\n");
+	printf("A2= "); scanf("%f", &a2); printf("\a\n");
+	printf("B2= "); scanf("%f", &b2); printf("\a\n");
+	printf("C2= "); scanf("%f", &c2); printf("\a\n");
+	*/
+	a1 = 1; b1 = 2; c1 = 3;
+	a2 = 4; b2 = 5; c2 = 6;
 	d=a1*b2-a2*b1;
 	dx=c1*b2-c2*b1;
 	dy=a1*c2-a2*1;

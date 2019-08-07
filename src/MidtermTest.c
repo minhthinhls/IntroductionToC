@@ -4,9 +4,8 @@
 
 char* numToWords(int n, char* s, char** single, char** tenth) {
 	if (n < 0 || 999 < n) {
-		return "INPUT ERROR";
+		return "INPUT ERROR !\n";
 	}
-    //char* str = (char*) malloc(100 * sizeof(char));
     char* str = (char*) calloc(100, sizeof(char));
     *str = "";
     // If n is more than 19, divide it 
@@ -38,7 +37,7 @@ void exercise_13() {
 						"twelve ", "thirteen ", "fourteen ", "fifteen ", "sixteen ", "seventeen ", "eighteen ", "nineteen "};
 	/* The first & second strings are not used, they are to simplify the array indexing */
     char *tenth[] = {"", "", "twenty ", "thirty ", "forty ", "fifty ", "sixty ", "seventy ", "eighty ", "ninety "};
-	printf("%d = %s",n ,numToWords(n, ".", single, tenth));
+	printf("%d = %s\n", n, numToWords(n, ".", single, tenth));
 }
 
 int factorial(int n) { 
@@ -52,7 +51,7 @@ void exercise_14() {
 	int n;
 	printf("Input n to compute factorial: ");
 	scanf("%d", &n);
-	printf("(%d)! = %d",n ,factorial(n));
+	printf("(%d)! = %d\n",n ,factorial(n));
 }
 
 int combination(int n, int k) {
@@ -72,7 +71,7 @@ void exercise_15() {
 	scanf("%d", &N);
 	printf("Input K: ");
 	scanf("%d", &K);
-	printf("%dC%d = %d", N, K, combination(N, K));
+	printf("%dC%d = %d\n", N, K, combination(N, K));
 }
 
 void exercise_16() {
@@ -103,9 +102,9 @@ void exercise_17() {
 		maxBC = c;
 	}
 	if (maxAB > maxBC) {
-		printf("Max is: %d", maxAB);
+		printf("Max is: %d\n", maxAB);
 	} else {
-		printf("Max is: %d", maxBC);
+		printf("Max is: %d\n", maxBC);
 	}
 	
 }
@@ -126,6 +125,7 @@ void exercise_18() {
 	for(i = 0; i < n; i++) {
 		printf("%d ", fibbonacci(i));            
 	}
+	printf("\n");
 }
 
 void exercise_19() {
@@ -161,11 +161,12 @@ void exercise_20() {
 
 void main() {
 	exercise_13();
-	//exercise_14();
-	//exercise_15();
-	//exercise_16();
-	//exercise_17();
-	//exercise_18();
-	//exercise_19();
-	//exercise_20();
+	exercise_14();
+	exercise_15();
+	exercise_16();
+	exercise_17();
+	exercise_18();
+	exercise_19();
+	exercise_20();
 }
+

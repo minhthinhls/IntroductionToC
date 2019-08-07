@@ -33,7 +33,7 @@ int* ex02(int n) {
 }
 
 int isPrime(int n) { 
-    // Corner cases 
+    /* Corner cases ! */
     if (n <= 1) {
     	return 0; // False
 	} else if (n <= 3) {

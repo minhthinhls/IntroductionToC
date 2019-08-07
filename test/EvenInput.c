@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 int main() {
 	int number, i = 0, j;
 	int array[2];
@@ -14,6 +16,5 @@ int main() {
 	for (j = 0; j < i; j++) {
 		printf("%d\t", array[j]);
 	}
-	
 }
 

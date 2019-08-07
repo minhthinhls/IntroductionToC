@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 int main() {
 	char* buffer = (char*)malloc(100 * sizeof(char)); // Biên' buffer chua' duoc. 100 kí tu.
 	printf("Enter a string: ");
@@ -17,6 +16,6 @@ int main() {
 	if (f != 0) {
 		printf("The input is a float: %f", f);
 	}
-	
+	return 0;
 }
 

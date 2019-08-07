@@ -17,4 +17,3 @@ int main() {
 	printf("Gia tri cua x: %d\n", x);
 	printf("Gia tri cua y: %d\n", y);
 }
-
