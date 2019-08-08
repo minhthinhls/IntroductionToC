@@ -227,23 +227,22 @@ int numPerfectSquare(int *arr, int n) {
 }
 
 int isPrime(int n) {
-	// Corner cases !
-    if (n <= 1) {
-    	return 0; // False
+	if (n <= 1) { // Corner cases !
+		return 0; // False
 	} else if (n <= 3) {
-    	return 1; // True
+		return 1; // True
 	}
-    /* All number that is divisible by 2 or 3, excepting 2 or 3, are not Prime ! */
-    if (n % 2 == 0 || n % 3 == 0) {
-        return 0; // False
-    }
-    int i;
-    for (i = 5; i * i <= n; i = i + 6) { // The same loop as i < sqrt(n), continue with value == 5
-        if (n % i == 0 || n % (i + 2) == 0) {
-        	return 0; // False
+	/* All number that is divisible by 2 or 3, excepting 2 or 3, are not Prime ! */
+	if (n % 2 == 0 || n % 3 == 0) {
+		return 0; // False
+	}
+	int i;
+	for (i = 5; i * i <= n; i = i + 6) { // The same loop as i < sqrt(n), continue with value == 5
+		if (n % i == 0 || n % (i + 2) == 0) {
+			return 0; // False
 		}
 	}
-    return 1; // True
+	return 1; // True
 }
 
 int numPrime(int *arr, int n) {
@@ -268,77 +267,77 @@ int numOccurrencesOf(int *arr, int n, int x) {
 
 int horizontalZigzagIncrement(int **arr, int nRows, int nColumns) {
 	int evenRow = 0; // Starts from the first row !
-    int oddRow = 1; // Starts from the next row !
-    int column, curValue, preValue; // Current value and previous value to check is this increasing !
-    while (evenRow < nRows) { // Exceed the last row of the array -> Stop iterating !
-        for (column = 0; column < nColumns; column++) {
-        	if (evenRow == 0 && column == 0) {
-        		curValue = arr[0][0];
-        		printf("[%d]", curValue);
-        		continue; // Skip the first value since we need to initiate $<curValue>
+	int oddRow = 1; // Starts from the next row !
+	int column, curValue, preValue; // Current value and previous value to check is this increasing !
+	while (evenRow < nRows) { // Exceed the last row of the array -> Stop iterating !
+		for (column = 0; column < nColumns; column++) {
+			if (evenRow == 0 && column == 0) {
+				curValue = arr[0][0];
+				printf("[%d]", curValue);
+				continue; // Skip the first value since we need to initiate $<curValue>
 			}
-        	preValue = curValue;
-        	curValue = arr[evenRow][column];
-            printf("[%d]", curValue); // evenRow will be printed in the same direction !
-            if (preValue > curValue) {
-        		return 0; // Return FALSE
+			preValue = curValue;
+			curValue = arr[evenRow][column];
+			printf("[%d]", curValue); // evenRow will be printed in the same direction !
+			if (preValue > curValue) {
+				return 0; // Return FALSE
 			}
-        }
-        evenRow += 2; // Skipping next row so as to get the next evenRow !
-        
-        if(oddRow < nRows) {
-	        for (column = nColumns - 1; column >= 0; column--) {
-	        	preValue = curValue;
-	        	curValue = arr[oddRow][column];
-	            printf("[%d]", curValue); // oddRow will be printed in the opposite direction !
-	            if (preValue > curValue) {
-	        		return 0; // Return FALSE
+		}
+		evenRow += 2; // Skipping next row so as to get the next evenRow !
+		
+		if(oddRow < nRows) {
+			for (column = nColumns - 1; column >= 0; column--) {
+				preValue = curValue;
+				curValue = arr[oddRow][column];
+				printf("[%d]", curValue); // oddRow will be printed in the opposite direction !
+				if (preValue > curValue) {
+					return 0; // Return FALSE
 				}
-	        }
-        }
-        oddRow += 2; // Skipping next row so as to get the next oddRow !
-    }
-    return 1; // Return TRUE
+			}
+		}
+		oddRow += 2; // Skipping next row so as to get the next oddRow !
+	}
+	return 1; // Return TRUE
 }
 
 int verticalZigzagIncrement(int **arr, int nRows, int nColumns) {
 	int evenColumn = 0; // Starts from the first column !
-    int oddColumn = 1; // Starts from the next column !
-    int row, curValue, preValue; // Current value and previous value to check is this increasing !
-    while (evenColumn < nColumns) { // Exceed the last row of the array -> Stop iterating !
-        for (row = 0; row < nRows; row++) {
-        	if (evenColumn == 0 && row == 0) {
-        		curValue = arr[0][0];
-        		printf("[%d]", curValue);
-        		continue; // Skip the first value since we need to initiate $<curValue>
+	int oddColumn = 1; // Starts from the next column !
+	int row, curValue, preValue; // Current value and previous value to check is this increasing !
+	while (evenColumn < nColumns) { // Exceed the last row of the array -> Stop iterating !
+		for (row = 0; row < nRows; row++) {
+			if (evenColumn == 0 && row == 0) {
+				curValue = arr[0][0];
+				printf("[%d]", curValue);
+				continue; // Skip the first value since we need to initiate $<curValue>
 			}
-        	preValue = curValue;
-        	curValue = arr[row][evenColumn];
-            printf("[%d]", curValue); // evenRow will be printed in the same direction !
-            if (preValue > curValue) {
-        		return 0; // Return FALSE
+			preValue = curValue;
+			curValue = arr[row][evenColumn];
+			printf("[%d]", curValue); // evenRow will be printed in the same direction !
+			if (preValue > curValue) {
+				return 0; // Return FALSE
 			}
-        }
-        evenColumn += 2; // Skipping next row so as to get the next evenRow !
-        
-        if(oddColumn < nColumns) {
-	        for (row = nRows - 1; row >= 0; row--) {
-	        	preValue = curValue;
-	        	curValue = arr[row][oddColumn];
-	            printf("[%d]", curValue); // oddRow will be printed in the opposite direction !
-	            if (preValue > curValue) {
-	        		return 0; // Return FALSE
+		}
+		evenColumn += 2; // Skipping next row so as to get the next evenRow !
+		
+		if(oddColumn < nColumns) {
+			for (row = nRows - 1; row >= 0; row--) {
+				preValue = curValue;
+				curValue = arr[row][oddColumn];
+				printf("[%d]", curValue); // oddRow will be printed in the opposite direction !
+				if (preValue > curValue) {
+					return 0; // Return FALSE
 				}
-	        }
-        }
-        oddColumn += 2; // Skipping next row so as to get the next oddRow !
-    }
-    return 1; // Return TRUE
+			}
+		}
+		oddColumn += 2; // Skipping next row so as to get the next oddRow !
+	}
+	return 1; // Return TRUE
 }
 
 int isPalindrome(int *arr, int n) {
-	int low = 0, high = n - 1;	// Start from leftmost and rightmost corners of array
-	while (low < high) {	// Keep comparing integers, using 2 pointers until they cross-over each others.
+	int low = 0, high = n - 1; // Start from leftmost and rightmost corners of array
+	while (low < high) { // Keep comparing integers, using 2 pointers until they cross-over each others.
 		if (arr[low++] != arr[high--]) {
 			return 0; // Return FALSE
 		}
@@ -522,29 +521,29 @@ int isPalindromeRecursively(int *low, int *high) {
 }
 
 void ascendingRecursiveSort(int *arr, int n) {
-    if (n == 1) {
-    	return;
+	if (n == 1) {
+		return;
 	}
 	int i;
-    for (i = 0; i < n - 1; i++) {
-    	if (arr[i] > arr[i + 1]) {
-    		swap(arr + i, arr + i + 1);
+	for (i = 0; i < n - 1; i++) {
+		if (arr[i] > arr[i + 1]) {
+			swap(arr + i, arr + i + 1);
 		}
 	}
-    ascendingRecursiveSort(arr, n - 1);
+	ascendingRecursiveSort(arr, n - 1);
 }
 
 void descendingRecursiveSort(int *arr, int n) {
-    if (n == 1) {
-    	return;
+	if (n == 1) {
+		return;
 	}
 	int i;
-    for (i = 0; i < n - 1; i++) {
-    	if (arr[i] < arr[i + 1]) {
-    		swap(arr + i, arr + i + 1);
+	for (i = 0; i < n - 1; i++) {
+		if (arr[i] < arr[i + 1]) {
+			swap(arr + i, arr + i + 1);
 		}
 	}
-    descendingRecursiveSort(arr, n - 1);
+	descendingRecursiveSort(arr, n - 1);
 }
 
 int* reverseArrayRecursively(int *des, int* arr, int i, int nElems) {

@@ -33,23 +33,23 @@ int* ex02(int n) {
 }
 
 int isPrime(int n) { 
-    /* Corner cases ! */
-    if (n <= 1) {
-    	return 0; // False
+	/* Corner cases ! */
+	if (n <= 1) {
+		return 0; // False
 	} else if (n <= 3) {
-    	return 1; // True
+		return 1; // True
 	}
-    /* All number that is divisible by 2 or 3, excepting 2 or 3, are not Prime ! */
-    if (n % 2 == 0 || n % 3 == 0) {
-        return 0; // False
-    }
-    int i;
-    for (i = 5; i * i <= n; i = i + 6) { // The same loop as i < sqrt(n), continue with value == 5
-        if (n % i == 0 || n % (i + 2) == 0) {
-        	return 0; // False
+	/* All number that is divisible by 2 or 3, excepting 2 or 3, are not Prime ! */
+	if (n % 2 == 0 || n % 3 == 0) {
+		return 0; // False
+	}
+	int i;
+	for (i = 5; i * i <= n; i = i + 6) { // The same loop as i < sqrt(n), continue with value == 5
+		if (n % i == 0 || n % (i + 2) == 0) {
+			return 0; // False
 		}
 	}
-    return 1; // True
+	return 1; // True
 }
 
 int* ex03(int n) {

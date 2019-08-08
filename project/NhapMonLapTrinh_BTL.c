@@ -64,12 +64,12 @@ char* inCanhCong(int n) { // In ra màn hình cánh công? voi' chiêu` cao cua? công
 	/* Vòng lap. ngoài dê? in sô' dòng */
 	for (i = 1; i <= n; i++) {
 		/* Vòng lap. trong dê? in sô' côt. */
-        for (j = 1; j <= 2 * n; j++) {
-        	int gapSize = 2 * i - 2; // Dô. rông. cua? công? tai. môi~ hàng
-        	int rearSize = (2 * n - gapSize) / 2; // Dô. dày cua? rìa công? 2 bên hông
-        	if (rearSize < j && j <= 2 * n - rearSize) {
-        		printf(" ");
-        		strcat(canhCong, " "); /* Nôi' xâu " " vào xâu @{canhCong} và không tra? vê` gì hêt' */
+		for (j = 1; j <= 2 * n; j++) {
+			int gapSize = 2 * i - 2; // Dô. rông. cua? công? tai. môi~ hàng
+			int rearSize = (2 * n - gapSize) / 2; // Dô. dày cua? rìa công? 2 bên hông
+			if (rearSize < j && j <= 2 * n - rearSize) {
+				printf(" ");
+				strcat(canhCong, " "); /* Nôi' xâu " " vào xâu @{canhCong} và không tra? vê` gì hêt' */
 			} else {
 				printf("*");
 				strcat(canhCong, "*"); /* Nôi' xâu "*" vào xâu @{canhCong} và không tra? vê` gì hêt' */

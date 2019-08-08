@@ -17,11 +17,11 @@ void noiXauMoiVaoXauCu(char *xauCu, char *xauMoi) {
 
 /* Nôi' @{xâu Cu~} voi' môt. @{kí Tu. Moi'} và tra? vê` môt. @{Xâu Moi'} da~ duoc. nôi' xong */
 char* noiKiTuVaoXau(const char *xauCu, const char kiTuMoi) {
-    char *xauMoi; // Tao. biên' @{Xâu Moi'}
-    if (asprintf(&xauMoi, "%s%c", xauCu, kiTuMoi) == -1) {
+	char *xauMoi; // Tao. biên' @{Xâu Moi'}
+	if (asprintf(&xauMoi, "%s%c", xauCu, kiTuMoi) == -1) {
 		xauMoi = NULL; // @{Xâu Moi'} khoi? tao. thât' bai.
 	}
-    return xauMoi; // Tra? vê` giá tri. @{Xâu Moi'}
+	return xauMoi; // Tra? vê` giá tri. @{Xâu Moi'}
 }
 
 int main() {

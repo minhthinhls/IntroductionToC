@@ -3,9 +3,9 @@
 #include <stdlib.h>	// malloc(), calloc()
 
 void swapStrings(char** str1, char** str2){
-    char *temp = *str1;
-    *str1 = *str2;
-    *str2 = temp;
+	char *temp = *str1;
+	*str1 = *str2;
+	*str2 = temp;
 }
 
 char* getArg(int strlength) { // Get an argument / word !
@@ -251,17 +251,17 @@ int ex14(char *fullName, char *name) {
 	printf("Full Name is: <%s>\n", fullName);
 	int i, j, nameLength = strlen(name);
 	for (i = 0, j = 0; fullName[i] != '\0' && name[j] != '\0'; i++) {
-        if (fullName[i] == name[j]) {
-            j++;
-        } else {
-            j = 0;
-        }
-    }
-    if (j == nameLength && (fullName[i] == '\0' || fullName[i] == ' ')) { // Make sure that this is a name, followed by a space or end !
-    	printf("-> Found name <%s> inside Full Name !\n", name);
-        return 1; /* Substring found ! Return TRUE */
-    }
-    printf("-> Cannot found <%s> inside Full Name !\n", name);
+		if (fullName[i] == name[j]) {
+			j++;
+		} else {
+			j = 0;
+		}
+	}
+	if (j == nameLength && (fullName[i] == '\0' || fullName[i] == ' ')) { // Make sure that this is a name, followed by a space or end !
+		printf("-> Found name <%s> inside Full Name !\n", name);
+		return 1; /* Substring found ! Return TRUE */
+	}
+	printf("-> Cannot found <%s> inside Full Name !\n", name);
 	return 0; /* Substring not found ! Return FALSE */
 }
 
@@ -375,21 +375,21 @@ char* ex21(char *s, char *delete) {
 	int i, j, start, stop, deleteLength = strlen(delete);
 	
 	for (i = 0, j = 0; str[i] != '\0' && delete[j] != '\0'; i++) {
-        if (str[i] == delete[j]) {
-            j++;
-        } else {
-            j = 0;
-        }
-    }
-    if (j == deleteLength) {
-        start = i - j; /* Substring found at index <$start> */
-    } else {
-        start = -1; /* Substring not found ! */
-        printf("-> Cannot found Substring <%s> !", delete);
-        return "Substring not found !";
-    }
-    for (i = start; str[i] != '\0'; i++) {
-    	str[i] = str[i + deleteLength];
+		if (str[i] == delete[j]) {
+			j++;
+		} else {
+			j = 0;
+		}
+	}
+	if (j == deleteLength) {
+		start = i - j; /* Substring found at index <$start> */
+	} else {
+		start = -1; /* Substring not found ! */
+		printf("-> Cannot found Substring <%s> !", delete);
+		return "Substring not found !";
+	}
+	for (i = start; str[i] != '\0'; i++) {
+		str[i] = str[i + deleteLength];
 	}
 	str[i] = '\0';
 	printf("-> String after deleting <%s> = <%s>\n", delete, str);

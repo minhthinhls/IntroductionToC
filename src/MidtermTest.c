@@ -6,26 +6,26 @@ char* numToWords(int n, char* s, char** single, char** tenth) {
 	if (n < 0 || 999 < n) {
 		return "INPUT ERROR !\n";
 	}
-    char* str = (char*) calloc(100, sizeof(char));
-    *str = "";
-    // If n is more than 19, divide it 
-    if (n > 19) {
-    	if (n > 99) {
-    		*str = strcat(str, single[n / 100]);
-    		*str = strcat(str, "hundred ");
-    		n %= 100;
+	char* str = (char*) calloc(100, sizeof(char));
+	*str = "";
+	// If n is more than 19, divide it 
+	if (n > 19) {
+		if (n > 99) {
+			*str = strcat(str, single[n / 100]);
+			*str = strcat(str, "hundred ");
+			n %= 100;
 		}
-    	*str = strcat(strcat(str, tenth[n / 10]), single[n % 10]);
+		*str = strcat(strcat(str, tenth[n / 10]), single[n % 10]);
 	} else {
 		*str = strcat(str, single[n]);
 	}
-    // If n is non-zero 
-    if (n) {
-    	*str = strcat(str, s);
+	// If n is non-zero 
+	if (n) {
+		*str = strcat(str, s);
 	} else {
 		*str = strcat(str, "zero.");
 	}
-    return str;
+	return str;
 }
 
 void exercise_13() {
@@ -33,18 +33,18 @@ void exercise_13() {
 	printf("Input 3 digits integer 'n' to convert to words: ");
 	scanf("%d", &n);
 	/* The first string is not used, it is to simplify the array indexing */
-    char *single[] = {"", "one ", "two ", "three ", "four ", "five ", "six ", "seven ", "eight ", "nine ", "ten ", "eleven ", 
+	char *single[] = {"", "one ", "two ", "three ", "four ", "five ", "six ", "seven ", "eight ", "nine ", "ten ", "eleven ", 
 						"twelve ", "thirteen ", "fourteen ", "fifteen ", "sixteen ", "seventeen ", "eighteen ", "nineteen "};
 	/* The first & second strings are not used, they are to simplify the array indexing */
-    char *tenth[] = {"", "", "twenty ", "thirty ", "forty ", "fifty ", "sixty ", "seventy ", "eighty ", "ninety "};
+	char *tenth[] = {"", "", "twenty ", "thirty ", "forty ", "fifty ", "sixty ", "seventy ", "eighty ", "ninety "};
 	printf("%d = %s\n", n, numToWords(n, ".", single, tenth));
 }
 
 int factorial(int n) { 
-    if (n <= 0) {
+	if (n <= 0) {
 		return 1;
 	}
-    return n * factorial(n - 1); 
+	return n * factorial(n - 1); 
 }
 
 void exercise_14() {
@@ -123,7 +123,7 @@ void exercise_18() {
 	scanf("%d", &n);
 	printf("Fibbonacci of first %d elements: ", n);
 	for(i = 0; i < n; i++) {
-		printf("%d ", fibbonacci(i));            
+		printf("%d ", fibbonacci(i));			
 	}
 	printf("\n");
 }
