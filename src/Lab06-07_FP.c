@@ -59,57 +59,61 @@ int* cloneArray1D(int *arr, int nElems) {
 	return clone;
 }
 
-int** getRandomIntArray2D(int nRows, int nColumns, int minVal, int maxVal, int isIncreasing) {
+int** getRandomIntArray2D(int nRows, int nColumns, int minVal, int maxVal) {
 	if (nRows < 1 || nColumns < 1 || minVal > maxVal) {
-		printf("-> Error during creating 2D array of integers !\n");
+		printf("-> Error during creating random 2D array of integers !\n");
 		return NULL;
 	}
 	int i, j, **arr = getIntArgv(nRows, nColumns);
-	int maxStep = (maxVal - minVal) / (nRows + nColumns - 2); // Each next-value must not larger than this maxStep !
-	for (i = 0; i < nRows; i++) {
+	for (i = 0; i < nRows; i++) { /* For question 1, the 2D integer array is generated randomly ! */
 		for (j = 0; j < nColumns; j++) {
-			if (isIncreasing) { /* For question 2, the 2D integer array follows the increasing order rule ! */
-				while (1) {
-					int val = (rand() % (maxVal - minVal + 1)) + minVal; // Value ranged from [min, max]
-					if (j == 0) { // At first column !
-						if (i == 0) { // At first column & first row !
-							arr[i][j] = minVal; // Assuming the first value in the array is min value !
-							break;
-						} else { // At first column & from 2nd to n-th rows !
-							int prev = arr[i - 1][j];
-							if (val <= prev || val - prev > maxStep) {
-								continue; // Checking is this a larger values in row, while not exceed the step !
-							} else {
-								arr[i][j] = val;
-								break;
-							}
-						}
-					} else { // From 2nd to n-th columns !
-						if (i == 0) { // At first row & from 2nd to n-th columns !
-							int prev = arr[i][j - 1];
-							if (val <= prev || val - prev > maxStep) {
-								continue; // Checking is this a larger values in column, while not exceed the step !
-							} else {
-								arr[i][j] = val;
-								break;
-							}
-						} else { // From 2nd to n-th rows & 2nd to n-th columns !
-							int prev1 = arr[i - 1][j];
-							int prev2 = arr[i][j - 1];
-							if (val <= prev1 || val <= prev2 || val - prev1 > maxStep || val - prev2 > maxStep) {
-								continue; // Checking is this a larger values in both row & column, while not exceed the step !
-							} else {
-								arr[i][j] = val;
-								break;
-							}
-						}
-					}
-				}
-			} else { /* For question 1, the 2D integer array is generated randomly ! */
-				arr[i][j] = (rand() % (maxVal - minVal + 1)) + minVal;
-			}
+			arr[i][j] = (rand() % (maxVal - minVal + 1)) + minVal;
 		}
 	}
+	return arr;
+}
+
+int** getRandomIncreasingIntArray2D(int nRows, int nColumns, int minVal, int maxVal) {
+	if (nRows < 1 || nColumns < 1 || minVal > maxVal) {
+		printf("-> Error during creating random increasing 2D array of integers !\n");
+		return NULL;
+	}
+	int i, j, up, left, current, **arr = getIntArgv(nRows, nColumns);
+	int maxStep = (maxVal - minVal) / (nRows + nColumns - 2); // Each next-value must not larger than this maxStep !
+	for (i = 0; i < nRows; i++) { /* For question 2, the 2D integer array follows the increasing order rule ! */
+		for (j = 0; j < nColumns; j++) {
+			while (1) {
+				current = (rand() % (maxVal - minVal + 1)) + minVal; // Value ranged from [min, max]
+				up = i - 1 >= 0 ? arr[i - 1][j] : NULL;
+				left = j - 1 >= 0 ? arr[i][j - 1] : NULL;
+				if (up && left) { // If exist both up & left values !
+					if (current <= up || current <= left || current - up > maxStep || current - left > maxStep) {
+						continue; // Checking is this a larger values in both row & column, while not exceed the step !
+					} else {
+						arr[i][j] = current; // Assign the satisfied values to current indexs !
+						break; // Break WHILE loop !
+					}
+				} else if (up && !left) { // If exist only up values !
+					if (current <= up || current - up > maxStep) {
+						continue; // Checking is this a larger values in column, while not exceed the step !
+					} else {
+						arr[i][j] = current; // Assign the satisfied values to current indexs !
+						break; // Break WHILE loop !
+					}
+				} else if (!up && left) { // If exist only left values !
+					if (current <= left || current - left > maxStep) {
+						continue; // Checking is this a larger values in row, while not exceed the step !
+					} else {
+						arr[i][j] = current; // Assign the satisfied values to current indexs !
+						break; // Break WHILE loop !
+					}
+				} else { // If neither up nor left values exist -> arr[0][0] !
+					arr[i][j] = minVal; // Assuming the first value in the array is min value !
+					break; // Break WHILE loop !
+				}
+			} // End TRUE WHILE loop !
+		} // End $<j> FOR loop !
+	} // End $<i> FOR loop !
 	return arr;
 }
 
@@ -560,7 +564,7 @@ int* reverseArrayRecursively(int *des, int* arr, int i, int nElems) {
 
 int** ex01(int nRows, int nColumns, int min, int max) {
 	int i, j;
-	int **arr = getRandomIntArray2D(nRows, nColumns, min, max, 0); // isIncreasing == 0 == FALSE
+	int **arr = getRandomIntArray2D(nRows, nColumns, min, max); // isIncreasing == FALSE
 	printf("\n-----EXERCISE 1-----\n");
 	for (i = 0; i < nRows; i++) {
 		for (j = 0; j < nColumns; j++) {
@@ -573,7 +577,7 @@ int** ex01(int nRows, int nColumns, int min, int max) {
 
 int** ex02(int nRows, int nColumns, int min, int max) {
 	int i, j;
-	int **arr = getRandomIntArray2D(nRows, nColumns, min, max, 1); // isIncreasing == 1 == TRUE
+	int **arr = getRandomIncreasingIntArray2D(nRows, nColumns, min, max); // isIncreasing == TRUE
 	printf("\n-----EXERCISE 2-----\n");
 	for (i = 0; i < nRows; i++) {
 		for (j = 0; j < nColumns; j++) {
